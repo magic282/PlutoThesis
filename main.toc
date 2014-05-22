@@ -1,0 +1,50 @@
+\ttl@change@i {\@ne }{chapter}{3.8em}{\hspace {-3.8em}\hei }{\CJKprechaptername ~\thecontentslabel ~\CJKchaptername ~~}{}{\titlerule *[4pt]{.}\contentspage }\relax 
+\ttl@change@v {chapter}{}{}{}\relax 
+\ttl@change@i {\@ne }{section}{40pt}{}{\contentslabel {22pt}}{\hspace *{-22pt}}{\titlerule *[0.3pc]{.}\contentspage }\relax 
+\ttl@change@v {section}{}{}{}\relax 
+\ttl@change@i {\@ne }{subsection}{62pt}{}{\contentslabel {32pt}}{\hspace *{-32pt}}{\titlerule *[0.3pc]{.}\contentspage }\relax 
+\ttl@change@v {subsection}{}{}{}\relax 
+\contentsline {chapter}{\fontsize {12pt}{12pt}\selectfont 摘\hskip 1em\relax 要}{I}{section*.2}
+\contentsline {chapter}{\fontsize {12pt}{12pt}\selectfont ABSTRACT}{II}{section*.6}
+\contentsline {chapter}{第\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces {1}\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 章\hspace {0.8em}绪论}{1}{section*.10}
+\contentsline {section}{\numberline {1.1}模板的使用方法介绍}{1}{section*.12}
+\contentsline {section}{\numberline {1.2}哈尔滨工业大学\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces \LaTeX \hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 技术交流\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces QQ 群介绍}{1}{section*.14}
+\contentsline {chapter}{第\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces {2}\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 章\hspace {0.8em}图片的插入方法}{2}{section*.16}
+\contentsline {section}{\numberline {2.1}研究生院的插图规范}{2}{section*.18}
+\contentsline {subsection}{\numberline {2.1.1}图题及图中说明}{2}{section*.20}
+\contentsline {subsection}{\numberline {2.1.2}插图编排}{2}{section*.22}
+\contentsline {section}{\numberline {2.2}\LaTeX \hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 中推荐使用的图片格式}{3}{section*.24}
+\contentsline {section}{\numberline {2.3}单张图片的插入方法}{3}{section*.26}
+\contentsline {section}{\numberline {2.4}具有子图的图片插入方法}{6}{section*.31}
+\contentsline {chapter}{第\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces {3}\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 章\hspace {0.8em}表格的绘制方法}{8}{section*.38}
+\contentsline {section}{\numberline {3.1}研究生院的绘表规范}{8}{section*.40}
+\contentsline {section}{\numberline {3.2}普通表格的绘制方法}{8}{section*.42}
+\contentsline {section}{\numberline {3.3}长表格的绘制方法}{9}{section*.45}
+\contentsline {section}{\numberline {3.4}列宽可调表格的绘制方法}{12}{section*.49}
+\contentsline {subsection}{\numberline {3.4.1}表格内某单元格内容过长的情况}{12}{section*.51}
+\contentsline {subsection}{\numberline {3.4.2}对物理量符号进行注释的情况}{13}{section*.54}
+\contentsline {chapter}{第\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces {4}\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 章\hspace {0.8em}数学公式的输入方法}{15}{section*.56}
+\contentsline {section}{\numberline {4.1}研究生院的公式规范}{15}{section*.58}
+\contentsline {section}{\numberline {4.2}生成\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces \LaTeX \hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 数学公式的两种方法}{15}{section*.60}
+\contentsline {subsection}{\numberline {4.2.1}基于\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces MathType\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 软件的数学公式生成方法}{15}{section*.62}
+\contentsline {subsection}{\numberline {4.2.2}基于\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces MATLAB\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 软件的数学公式生成方法}{16}{section*.64}
+\contentsline {section}{\numberline {4.3}数学字体}{17}{section*.66}
+\contentsline {section}{\numberline {4.4}行内公式}{18}{section*.69}
+\contentsline {section}{\numberline {4.5}行间公式}{19}{section*.78}
+\contentsline {section}{\numberline {4.6}可自动调整大小的定界符}{19}{section*.81}
+\contentsline {section}{\numberline {4.7}数学重音符号}{20}{section*.83}
+\contentsline {chapter}{第\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces {5}\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 章\hspace {0.8em}模板的其它说明}{21}{section*.85}
+\contentsline {section}{\numberline {5.1}中英文封面的相关信息}{21}{section*.87}
+\contentsline {section}{\numberline {5.2}\textsc {Bib}\kern -.08emT\kern -.1667em\lower .5ex\hbox {E}\kern -.125emX\spacefactor \@m \hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces 文献文件的写法}{21}{section*.89}
+\contentsline {section}{\numberline {5.3}参考文献的引用}{22}{section*.91}
+\contentsline {section}{\numberline {5.4}单层罗列环境}{22}{section*.93}
+\contentsline {section}{\numberline {5.5}算法}{23}{section*.96}
+\contentsline {section}{\numberline {5.6}定理定义}{24}{section*.102}
+\contentsline {chapter}{\fontsize {12pt}{12pt}\selectfont 结\hskip 1em\relax 论}{26}{section*.105}
+\contentsline {chapter}{\relax \relax 附录\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces A\hspace {0.8em}带章节的附录}{27}{section*.111}
+\contentsline {section}{\numberline {A.1}附录节的内容}{27}{section*.113}
+\contentsline {chapter}{参考文献}{27}{section*.108}
+\contentsline {chapter}{\fontsize {12pt}{12pt}\selectfont 攻读本科学位期间发表的论文及其他成果}{28}{section*.117}
+\contentsline {chapter}{\fontsize {12pt}{12pt}\selectfont 哈尔滨工业大学学位论文原创性声明及使用授权说明}{29}{section*.121}
+\contentsline {chapter}{\fontsize {12pt}{12pt}\selectfont 致\hskip 1em\relax 谢}{30}{section*.125}
+\contentsfinish 

@@ -76,9 +76,15 @@
   \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 学位论文 }%
   \fancyfoot[C,C]{\xiaowu -~\thepage~-}
 \else
-  \fancyhead[CO]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 学位论文}
-  \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 学位论文}%
-  \fancyfoot[C,C]{\xiaowu -~\thepage~-}
+  \ifxueweimaster
+    \fancyhead[CO]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 学位论文}
+    \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 学位论文}%
+    \fancyfoot[C,C]{\xiaowu -~\thepage~-}
+  \else
+    \fancyhead[CO]{\song \xiaowu 哈尔滨工业大学本科毕业设计（论文）}
+    \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学本科毕业设计（论文）}%
+    \fancyfoot[C,C]{\xiaowu -~\thepage~-}
+  \fi
 \fi
 
 \renewcommand\frontmatter{\cleardoublepage
