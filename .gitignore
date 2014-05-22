@@ -213,3 +213,11 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+main.pdf
+*.aux
+*.out
+*.toc
+main.synctex.gz
+main.pdf
+main.thm
+main.pdf
