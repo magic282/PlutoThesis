@@ -16,10 +16,20 @@
 \begin{document}
 
 \input{setup/Definition} % 文本格式定义
-\input{setup/format}
 
 \frontmatter
-\input{cover} % 封面
+\ifxueweibachelor
+  \input{setup/bformat} % 本科蛋疼格式
+\else
+  \input{setup/format} % 硕博格式
+\fi
+
+\frontmatter
+\ifxueweibachelor
+  \input{bcover} % 本科蛋疼封面
+\else
+  \input{cover} % 硕博封面
+\fi
 
 % 中英目录
 \defaultfont
@@ -61,7 +71,11 @@
 \bibliography{reference}
 \include{appendix/appA}    % 附录
 \include{appendix/publications}    % 所发文章
-\include{appendix/Authorization}   % 承诺
+\ifxueweibachelor
+  \include{appendix/bAuthorization} % 本科蛋疼承诺
+\else
+  \include{appendix/Authorization} % 硕博承诺
+\fi   
 \include{appendix/acknowledgements}% 致谢
 
 \ifxueweidoctor
