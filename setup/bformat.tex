@@ -140,6 +140,8 @@
 
 % 封面、摘要、版权、致谢格式定义
 \def\ctitle#1{\def\@ctitle{#1}}\def\@ctitle{}
+\def\ctitleone#1{\def\@ctitleone{#1}}\def\@ctitleone{}
+\def\ctitletwo#1{\def\@ctitletwo{#1}}\def\@ctitletwo{}
 \def\cdegree#1{\def\@cdegree{#1}}\def\@cdegree{}
 \def\caffil#1{\def\@caffil{#1}}\def\@caffil{}
 \def\csubject#1{\def\@csubject{#1}}\def\@csubject{}
@@ -240,8 +242,8 @@
      {\xiaosan
     \begin{center} \renewcommand{\arraystretch}{2.32} \hei
     \begin{tabular}{l@{\ \  }c}
-    {\hei\xiaoer  题\hfill 目}                  & \underline{\makebox[6.1cm]{\xiaoer 标题如何自动换行}}\\
-    &  \underline{\makebox[6.1cm]{\xiaoer 坐等大神修复}}\\
+    {\hei\xiaoer  题\hfill 目}                  & \underline{\makebox[6.1cm]{\xiaoer \@ctitleone}}\\
+    &  \underline{\makebox[6.1cm]{\xiaoer \@ctitletwo}}\\
 	& \\
     {\hei 专\hfill 业}                  & \underline{\makebox[6.1cm]{\@csubject}}\\
     {\hei 学\hfill 号}                  & \underline{\makebox[6.1cm]{\@cstuid}}\\
