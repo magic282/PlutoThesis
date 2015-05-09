@@ -42,15 +42,15 @@
 \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
 
 \titlecontents{chapter}[3.8em]{\hspace{-3.8em}\hei}{\CJKprechaptername~\thecontentslabel~\CJKchaptername~~}{}{\titlerule*[4pt]{.}\contentspage}
-\dottedcontents{section}[40pt]{}{22pt}{0.3pc}
-\dottedcontents{subsection}[62pt]{}{32pt}{0.3pc}
+\dottedcontents{section}[32pt]{}{21pt}{0.3pc}
+\dottedcontents{subsection}[53pt]{}{30pt}{0.3pc}
 
 
 % 按工大标准, 缩小目录中各级标题之间的缩进，使它们相隔一个字符距离，也就是12pt
 \makeatletter
-\renewcommand*\l@chapter{\@dottedtocline{0}{0em}{4em}}%控制英文目录： 细点\@dottedtocline  粗点\@dottedtoclinebold
-\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{1.8em}}
-\renewcommand*\l@subsection{\@dottedtocline{2}{2.5em}{2.5em}}
+\renewcommand*\l@chapter{\@dottedtocline{0}{0em}{5em}}%控制英文目录： 细点\@dottedtocline  粗点\@dottedtoclinebold
+\renewcommand*\l@section{\@dottedtocline{1}{1em}{1.8em}}
+\renewcommand*\l@subsection{\@dottedtocline{2}{2em}{2.5em}}
 
 
 % 定义页眉和页脚
@@ -92,8 +92,8 @@
   \pagenumbering{Roman}}
 
 % 调整罗列环境的布局
-\setitemize{leftmargin=3em,itemsep=0em,partopsep=0em,parsep=0em,topsep=-0em}
-\setenumerate{leftmargin=3em,itemsep=0em,partopsep=0em,parsep=0em,topsep=0em}
+\setitemize{leftmargin=0em,itemsep=0em,partopsep=0em,parsep=0em,topsep=0em,itemindent=3em}
+\setenumerate{leftmargin=0em,itemsep=0em,partopsep=0em,parsep=0em,topsep=0em,itemindent=3.5em}
 
 \newcommand{\citeup}[1]{\textsuperscript{\cite{#1}}}
 
@@ -101,7 +101,8 @@
 \captionnamefont{\wuhao}
 \captiontitlefont{\wuhao}
 \captiondelim{~~}
-\captionstyle{\centering}
+%\captionstyle{\hang}
+\hangcaption
 \renewcommand{\subcapsize}{\wuhao}
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{0pt}
@@ -112,9 +113,9 @@
 \begin{list}{[\arabic{pubctr}]} %%标签格式
     {
      \usecounter{pubctr}
-     \setlength{\leftmargin}{2.5em}     % 左边界 \leftmargin =\itemindent + \labelwidth + \labelsep
+     \setlength{\leftmargin}{1.7em}     % 左边界 \leftmargin =\itemindent + \labelwidth + \labelsep
      \setlength{\itemindent}{0em}     % 标号缩进量
-     \setlength{\labelsep}{1em}       % 标号和列表项之间的距离,默认0.5em
+     \setlength{\labelsep}{0.5em}       % 标号和列表项之间的距离,默认0.5em
      \setlength{\rightmargin}{0em}    % 右边界
      \setlength{\topsep}{0ex}         % 列表到上下文的垂直距离
      \setlength{\parsep}{0ex}         % 段落间距
@@ -252,12 +253,12 @@
     \thispagestyle{empty}
 
     {
-    \xiaosi\noindent Classif\/ied Index: \@natclassifiedindex \\
+    \xiaosi\noindent Classified Index: \@natclassifiedindex \\
                   U.D.C:  \@internatclassifiedindex }
     \begin{center}
     \parbox[t][1.6cm][t]{\textwidth}{\begin{center} \end{center} }
     \parbox[t][3.5cm][t]{\textwidth}{\xiaoer
-    \begin{center} {  Dissertation for the {\exueweier} Degree in Engineering}\end{center} } %与中文保持一致，删除in {\exueke}
+    \begin{center} {  Dissertation for the {\exueweier} Degree in \exueke}\end{center} } %与中文保持一致，删除in {\exueke}
 
     \parbox[t][7cm][t]{\textwidth}{\erhao
     \begin{center} { \bfseries \@etitle}\end{center} }
@@ -308,8 +309,8 @@
 \@cabstract
 \vspace{\baselineskip}
 
-\hangafter=1\hangindent=52.3pt\noindent
-{\hei 关键词：} \@ckeywords
+\hangafter=1\hangindent=51pt\noindent
+{\hei 关键词}：\@ckeywords
 
 %%%%%%%%%%%%%%%%%%%   English Abstract  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
@@ -317,7 +318,7 @@
 \phantomsection
 \markboth{Abstract}{Abstract}
 \addcontentsline{toc}{chapter}{\xiaosi ABSTRACT}
-\addcontentsline{toe}{chapter}{\bfseries \xiaosi Abstract (In English)}  \chapter*{\textbf{Abstract}}
+\addcontentsline{toe}{chapter}{\bfseries \xiaosi Abstract (In English)}  \chapter*{Abstract}
 \@eabstract
 \vspace{\baselineskip}
 
