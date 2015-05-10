@@ -11,6 +11,10 @@ PlutoThesis
 
 ---
 
+该模板支持**XeLaTeX**的分支，请参见[XeLaTeX分支](https://github.com/magic282/PlutoThesis/tree/xelatex)。
+
+---
+
 本模板自著名的[PlutoThesis](https://code.google.com/p/plutothesis/)修改而来，主要目的是增加了本科生毕业设计论文的模板，**原模板中的硕博部分没有改动**。
 
 楼主在**2014年春季**依据学校的本、硕、博论文格式要求重新核对了模板。若后续学校修改排版要求导致本模板与官方要求不符，请自行酌情修改模板（自己fork一下改改吧。。。），不要怪楼主_(:з」∠)_
