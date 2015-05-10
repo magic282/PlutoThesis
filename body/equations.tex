@@ -69,110 +69,110 @@ MATLAB~中提供了一个~latex~函数，它可将符号表达式转化为~\LaTe
 它是开源系统中使用的免费字体，其字符字体与~Times New Roman~字体几乎完全相同）。表~\ref{table:fonts}~中分别列出了得到阿拉伯数字、拉丁字母和希腊字母
 各种数学字体的命令。
 \begin{table}[htbp]
-\bicaption[table:fonts]{}{常用数学字体命令一览}{Table$\!$}{Summary of common commands for setting math fonts}
-\vspace{0.5em}\centering\wuhao
-\begin{tabular}{llll}
-\toprule
- & 阿拉伯数字\&大写希腊字母 & 大小写拉丁字母 & 小写希腊字母  \\
-\midrule
-斜体 & \verb|\mathit{}| & \verb|无命令| & \verb|无命令|\\
-粗斜体 & \verb|\boldsymbol{\mathit{}}| & \verb|\boldsymbol{}| & \verb|\boldsymbol{}|\\
-直立体 & \verb|无命令| & \verb|\mathrm{}| & \verb|字母后加up|\\
-粗体 & \verb|\mathbf{}或\boldsymbol{}| & \verb|\mathbf{}| & \verb|\boldsymbol{字母后加up}|\\
-\bottomrule
-\end{tabular}
+	\bicaption[table:fonts]{}{常用数学字体命令一览}{Table$\!$}{Summary of common commands for setting math fonts}
+	\vspace{0.5em}\centering\wuhao
+	\begin{tabular}{llll}
+		\toprule
+		& 阿拉伯数字\&大写希腊字母 & 大小写拉丁字母 & 小写希腊字母  \\
+		\midrule
+		斜体 & \verb|\mathit{}| & \verb|无命令| & \verb|无命令|\\
+		粗斜体 & \verb|\boldsymbol{\mathit{}}| & \verb|\boldsymbol{}| & \verb|\boldsymbol{}|\\
+		直立体 & \verb|无命令| & \verb|\mathrm{}| & \verb|字母后加up|\\
+		粗体 & \verb|\mathbf{}或\boldsymbol{}| & \verb|\mathbf{}| & \verb|\boldsymbol{字母后加up}|\\
+		\bottomrule
+	\end{tabular}
 \end{table}
 
 \noindent 下面列出了一些应采用直立数学字体的数学常数和数学符号。
 
 \vspace{-0.5em}\begin{center}\begin{tabularx}{0.7\textwidth}{XX}
-$\mathrm{d}$、 $\mathrm{D}$、 $\mathrm{p}$~———微分算子 & $\mathrm{e}$~———自然对数之底数\\
-$\mathrm{i}$、 $\mathrm{j}$~———虚数单位 & $\piup$———圆周率\\
-\end{tabularx}\end{center}
-
-\BiSection{行内公式}{Inline mode equations}
-出现在正文一行之内的公式称为行内公式，例如~$f(x)=\int_{a}^{b}\frac{\sin{x}}{x}\mathrm{d}x$。对于非矩阵和非多行形式的行内公式，一般不会使得行距发生变化，而~word~等软件却会根据行内公式的竖直距离而自动调节行距，如图~\ref{hangju}~所示。
-\begin{figure}[htbp]
-\centering
-\subfigure{\label{latex}}\addtocounter{subfigure}{-2}
-\subfigure[Inline mode equation derived from \LaTeX system]{\subfigure[由~\LaTeX~系统生成的行内公式]
-          {\fbox{\includegraphics[width=0.55\textwidth]{latex}}}}
-\subfigure{\label{word}}\addtocounter{subfigure}{-2}
-\subfigure[Inline mode equation displayed as .doc format file derived from word software]{\subfigure[由~word软件生成的~.doc~格式行内公式]
-          {\fbox{\includegraphics[width=0.55\textwidth]{word}}}}
-\subfigure{\label{pdf}}\addtocounter{subfigure}{-2}
-\subfigure[Inline mode equation displayed as .pdf format file derived from word software]{\subfigure[由~word软件生成的~.pdf~格式行内公式]
-          {\fbox{\includegraphics[width=0.55\textwidth]{pdf}}}}
-\bicaption[hangju]{}{由~\LaTeX~和~word~生成的~3~种行内公式屏显效果}{Fig.$\!$}{Three kinds of inline mode equation displayed effects derived from \LaTeX and word}
-\vspace{-1em}
-\end{figure}
-这三幅图分别为~\LaTeX~和~word~生成的行内公式屏显效果，从图中可看出，在~\LaTeX~文本含有公式的行内，在正文与公式之间对接工整，行距不变；而在~word~文本含有公式的行内，在正文与公式之间对接不齐，行距变大。因此从这一点来说，
-\LaTeX~系统在数学公式的排版上具有很大优势。
-
-\LaTeX~提供的行内公式最简单、最有效的方法是采用~\TeX~本来的标记———开始和结束标记都写作~\$，例如本节开始的例子可由下面的输入得到。
-\verb|$f(x)=\int_{a}^{b}\frac{\sin{x}}{x}\mathrm{d}x$|
-
-\BiSection{行间公式}{Displaymath mode equations}
-位于两行之间的公式称为行间公式，每个公式都是一个单独的段落，例如
-\[\int_a^b{f\left(x\right)\mathrm{d}x}=\lim_{\left\|\Delta{x_i}\right\|\to 0}\sum_i{f\left(\xi_i\right)\Delta{x_i}}\]
-除人工编号外，\LaTeX~各种类型行间公式的标记见表~\ref{eqtag}。
-\begin{table}[htbp]
-\bicaption[eqtag]{}{各种类型行间公式的标记}{Table$\!$}{Tags for several kinds of displaymath mode equations}
-\vspace{0.5em}\centering\wuhao
-\begin{tabularx}{0.85\textwidth}{cXX}
-\toprule
-& 无编号 & 自动编号\\\midrule
-单行公式 & \verb|\begin{displaymath}...... \end{displaymath}|~或~\verb|\[...\]| & \verb|\begin{equation} ...... \end{equation}|\\
-多行公式 & \verb|\begin{eqnarray*} ...... \end{eqnarray*}| & \verb|\begin{eqnarray} ...... \end{eqnarray}|\\
-\bottomrule
-\end{tabularx}
-\end{table}
-另外，在自动编号的某行公式行尾添加标签~\verb|\nonumber|，可将该行转换为无编号形式。
-
-行间多行公式需采用~\verb|eqnarray|~或~\verb|eqnarray*|~环境，它默认是一个列格式为~\verb|rcl|~的~3~列矩阵，并且中间列的字号要小一些，因此通常只将需要对齐的运算符号（通常为等号“=”）置于中间列。
-
-\BiSection{可自动调整大小的定界符}{Delimiters with automatic adjustable sizes}
-若在左右两个定界符之前分别添加命令~\verb|\left|~和~\verb|\right|，则定界符可根据所包围公式大小自动调整其尺寸，这可从式(\ref{nodelimiter})和式(\ref{delimiter})中看出。
-\begin{equation}\label{nodelimiter}
-(\sum_{k=\frac12}^{N^2})
-\end{equation}
-\begin{equation}\label{delimiter}
-\left(\sum_{k=\frac12}^{N^2}\right)
-\end{equation}
-式(\ref{nodelimiter})和式(\ref{delimiter})是在~\LaTeX~中分别输入如下代码得到的。
-\begin{verbatim}
-(\sum_{k=\frac12}^{N^2})
-\left(\sum_{k=\frac12}^{N^2}\right)
-\end{verbatim}
-\verb|\left|~和~\verb|\right|~总是成对出现的，若只需在公式一侧有可自动调整大小的定界符，则只要用“.”代替另一侧那个无需打印出来的定界符即可。
-
-若想获得关于此部分内容的更多信息，可参见~\href{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=voss-mathmode}{Math mode}~文档的第~8~章“Brackets, braces and parentheses”。
-
-\BiSection{数学重音符号}{Accents in math mode}
-数学重音符号通常用来区分同一字母表示的不同变量，输入方法如下（需要调用~\verb|amsmath|~宏包）：
-
-\vspace{0.5em}\noindent\wuhao\begin{tabularx}{\textwidth}{Xc|Xc|Xc}
- \verb|\acute| & $\acute{a}$ & \verb|\mathring| & $\mathring{a}$ & \verb|\underbrace| & $\underbrace{a}$ \\
- \verb|\bar| & $\bar{a}$ & \verb|\overbrace| & $\overbrace{a}$ & \verb|\underleftarrow| & $\underleftarrow{a}$ \\
- \verb|\breve| & $\breve{a}$ & \verb|\overleftarrow| & $\overleftarrow{a}$ & \verb|\underleftrightarrow| & $\underleftrightarrow{a}$ \\
- \verb|\check| & $\check{a}$ & \verb|\overleftrightarrow| & $\overleftrightarrow{a}$ & \verb|\underline| & $\underline{a}$ \\
- \verb|\dddot| & $\dddot{a}$ & \verb|\overline| & $\overline{a}$ & \verb|\underrightarrow| & $\underrightarrow{a}$ \\
- \verb|\ddot| & $\ddot{a}$ & \verb|\overrightarrow| & $\overrightarrow{a}$ & \verb|\vec| & $\vec{a}$ \\
- \verb|\dot| & $\dot{a}$ & \verb|\tilde| & $\tilde{a}$ & \verb|\widehat| & $\widehat{a}$ \\
- \verb|\grave| & $\grave{a}$ & \verb|\underbar| & $\underbar{a}$ & \verb|\widetilde| & $\widetilde{a}$ \\
- \verb|\hat| & $\hat{a}$ 
-\end{tabularx}\vspace{0.5em}
-\xiaosi 当需要在字母~$i$~和~$j$~的上方添加重音符号时，为了去掉这两个字母顶上的小点，这两个字母应该分别改用~\verb|\imath|~和~\verb|\jmath|。
-
-如果遇到某些符号不知道该采用什么命令能输出它时，则可通过~\href{http://detexify.kirelabs.org/classify.html}{Detexify$^2$~网站}来获取符号命令。若用鼠标左键在此网页的方框区域内画出你所要找的符号形状，则会在网页右方列出和你所画符号形状相近的~5~个符号及其相对应的~\LaTeX~输入命令。若所列出的符号中不包括你所要找的符号，还可通过点击“Select from the complete list!”的链接以得分从低到高的顺序列出所有符号及其相对应的~\LaTeX~输入命令。
-
-最后，笔者建议大家还是要以~\href{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=voss-mathmode}{Math mode}~这篇~pdf~文档作为主要参考。若要获得最为标准、美观的数学公式排版形式，可以查查文档中是否有和你所要的排版形式相同或相近的代码段，通过修改代码段以获得你所要的数学公式排版形式。
-
-
-
-
-
-
-
-
-
+		$\mathrm{d}$、 $\mathrm{D}$、 $\mathrm{p}$~———微分算子 & $\mathrm{e}$~———自然对数之底数\\
+		$\mathrm{i}$、 $\mathrm{j}$~———虚数单位 & $\piup$———圆周率\\
+	\end{tabularx}\end{center}
+	
+	\BiSection{行内公式}{Inline mode equations}
+	出现在正文一行之内的公式称为行内公式，例如~$f(x)=\int_{a}^{b}\frac{\sin{x}}{x}\mathrm{d}x$。对于非矩阵和非多行形式的行内公式，一般不会使得行距发生变化，而~word~等软件却会根据行内公式的竖直距离而自动调节行距，如图~\ref{hangju}~所示。
+	\begin{figure}[htbp]
+		\centering
+		\subfigure{\label{latex}}\addtocounter{subfigure}{-2}
+		\subfigure[Inline mode equation derived from \LaTeX system]{\subfigure[由~\LaTeX~系统生成的行内公式]
+			{\fbox{\includegraphics[width=0.55\textwidth]{latex}}}}
+		\subfigure{\label{word}}\addtocounter{subfigure}{-2}
+		\subfigure[Inline mode equation displayed as .doc format file derived from word software]{\subfigure[由~word软件生成的~.doc~格式行内公式]
+			{\fbox{\includegraphics[width=0.55\textwidth]{word}}}}
+		\subfigure{\label{pdf}}\addtocounter{subfigure}{-2}
+		\subfigure[Inline mode equation displayed as .pdf format file derived from word software]{\subfigure[由~word软件生成的~.pdf~格式行内公式]
+			{\fbox{\includegraphics[width=0.55\textwidth]{pdf}}}}
+		\bicaption[hangju]{}{由~\LaTeX~和~word~生成的~3~种行内公式屏显效果}{Fig.$\!$}{Three kinds of inline mode equation displayed effects derived from \LaTeX and word}
+		\vspace{-1em}
+	\end{figure}
+	这三幅图分别为~\LaTeX~和~word~生成的行内公式屏显效果，从图中可看出，在~\LaTeX~文本含有公式的行内，在正文与公式之间对接工整，行距不变；而在~word~文本含有公式的行内，在正文与公式之间对接不齐，行距变大。因此从这一点来说，
+	\LaTeX~系统在数学公式的排版上具有很大优势。
+	
+	\LaTeX~提供的行内公式最简单、最有效的方法是采用~\TeX~本来的标记———开始和结束标记都写作~\$，例如本节开始的例子可由下面的输入得到。
+	\verb|$f(x)=\int_{a}^{b}\frac{\sin{x}}{x}\mathrm{d}x$|
+	
+	\BiSection{行间公式}{Displaymath mode equations}
+	位于两行之间的公式称为行间公式，每个公式都是一个单独的段落，例如
+	\[\int_a^b{f\left(x\right)\mathrm{d}x}=\lim_{\left\|\Delta{x_i}\right\|\to 0}\sum_i{f\left(\xi_i\right)\Delta{x_i}}\]
+	除人工编号外，\LaTeX~各种类型行间公式的标记见表~\ref{eqtag}。
+	\begin{table}[htbp]
+		\bicaption[eqtag]{}{各种类型行间公式的标记}{Table$\!$}{Tags for several kinds of displaymath mode equations}
+		\vspace{0.5em}\centering\wuhao
+		\begin{tabularx}{0.85\textwidth}{cXX}
+			\toprule
+			& 无编号 & 自动编号\\\midrule
+			单行公式 & \verb|\begin{displaymath}...... \end{displaymath}|~或~\verb|\[...\]| & \verb|\begin{equation} ...... \end{equation}|\\
+			多行公式 & \verb|\begin{eqnarray*} ...... \end{eqnarray*}| & \verb|\begin{eqnarray} ...... \end{eqnarray}|\\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+	另外，在自动编号的某行公式行尾添加标签~\verb|\nonumber|，可将该行转换为无编号形式。
+	
+	行间多行公式需采用~\verb|eqnarray|~或~\verb|eqnarray*|~环境，它默认是一个列格式为~\verb|rcl|~的~3~列矩阵，并且中间列的字号要小一些，因此通常只将需要对齐的运算符号（通常为等号“=”）置于中间列。
+	
+	\BiSection{可自动调整大小的定界符}{Delimiters with automatic adjustable sizes}
+	若在左右两个定界符之前分别添加命令~\verb|\left|~和~\verb|\right|，则定界符可根据所包围公式大小自动调整其尺寸，这可从式(\ref{nodelimiter})和式(\ref{delimiter})中看出。
+	\begin{equation}\label{nodelimiter}
+	(\sum_{k=\frac12}^{N^2})
+	\end{equation}
+	\begin{equation}\label{delimiter}
+	\left(\sum_{k=\frac12}^{N^2}\right)
+	\end{equation}
+	式(\ref{nodelimiter})和式(\ref{delimiter})是在~\LaTeX~中分别输入如下代码得到的。
+	\begin{verbatim}
+	(\sum_{k=\frac12}^{N^2})
+	\left(\sum_{k=\frac12}^{N^2}\right)
+	\end{verbatim}
+	\verb|\left|~和~\verb|\right|~总是成对出现的，若只需在公式一侧有可自动调整大小的定界符，则只要用“.”代替另一侧那个无需打印出来的定界符即可。
+	
+	若想获得关于此部分内容的更多信息，可参见~\href{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=voss-mathmode}{Math mode}~文档的第~8~章“Brackets, braces and parentheses”。
+	
+	\BiSection{数学重音符号}{Accents in math mode}
+	数学重音符号通常用来区分同一字母表示的不同变量，输入方法如下（需要调用~\verb|amsmath|~宏包）：
+	
+	\vspace{0.5em}\noindent\wuhao\begin{tabularx}{\textwidth}{Xc|Xc|Xc}
+		\verb|\acute| & $\acute{a}$ & \verb|\mathring| & $\mathring{a}$ & \verb|\underbrace| & $\underbrace{a}$ \\
+		\verb|\bar| & $\bar{a}$ & \verb|\overbrace| & $\overbrace{a}$ & \verb|\underleftarrow| & $\underleftarrow{a}$ \\
+		\verb|\breve| & $\breve{a}$ & \verb|\overleftarrow| & $\overleftarrow{a}$ & \verb|\underleftrightarrow| & $\underleftrightarrow{a}$ \\
+		\verb|\check| & $\check{a}$ & \verb|\overleftrightarrow| & $\overleftrightarrow{a}$ & \verb|\underline| & $\underline{a}$ \\
+		\verb|\dddot| & $\dddot{a}$ & \verb|\overline| & $\overline{a}$ & \verb|\underrightarrow| & $\underrightarrow{a}$ \\
+		\verb|\ddot| & $\ddot{a}$ & \verb|\overrightarrow| & $\overrightarrow{a}$ & \verb|\vec| & $\vec{a}$ \\
+		\verb|\dot| & $\dot{a}$ & \verb|\tilde| & $\tilde{a}$ & \verb|\widehat| & $\widehat{a}$ \\
+		\verb|\grave| & $\grave{a}$ & \verb|\underbar| & $\underbar{a}$ & \verb|\widetilde| & $\widetilde{a}$ \\
+		\verb|\hat| & $\hat{a}$ 
+	\end{tabularx}\vspace{0.5em}
+	\xiaosi 当需要在字母~$i$~和~$j$~的上方添加重音符号时，为了去掉这两个字母顶上的小点，这两个字母应该分别改用~\verb|\imath|~和~\verb|\jmath|。
+	
+	如果遇到某些符号不知道该采用什么命令能输出它时，则可通过~\href{http://detexify.kirelabs.org/classify.html}{Detexify$^2$~网站}来获取符号命令。若用鼠标左键在此网页的方框区域内画出你所要找的符号形状，则会在网页右方列出和你所画符号形状相近的~5~个符号及其相对应的~\LaTeX~输入命令。若所列出的符号中不包括你所要找的符号，还可通过点击“Select from the complete list!”的链接以得分从低到高的顺序列出所有符号及其相对应的~\LaTeX~输入命令。
+	
+	最后，笔者建议大家还是要以~\href{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=voss-mathmode}{Math mode}~这篇~pdf~文档作为主要参考。若要获得最为标准、美观的数学公式排版形式，可以查查文档中是否有和你所要的排版形式相同或相近的代码段，通过修改代码段以获得你所要的数学公式排版形式。
+	
+	
+	
+	
+	
+	
+	
+	
+	

@@ -7,6 +7,14 @@ PlutoThesis
 
 ---
 
+这是该模板的**XeLaTeX**分支！
+
+对于XeLaTeX的支持来源于该[项目](https://github.com/dustincys/PlutoThesis)。
+
+虽然我喜欢XeLaTeX一点，但是其实我还是倾向使用PDFLaTeX，避免对模板大幅修改。
+
+---
+
 坚持用**Word**的同学请按`Ctrl + W`
 
 ---
@@ -18,6 +26,8 @@ PlutoThesis
 ---
 
 请使用**PDFLaTeX**编译。具体使用方法请见[main.pdf](https://github.com/magic282/PlutoThesis/blob/master/main.pdf)。
+
+也可以使用**XeLaTeX**编译，具体请在文档中修改定义的编译方式。
 
 ---
 

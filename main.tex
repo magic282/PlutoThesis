@@ -1,27 +1,54 @@
 % !Mode:: "TeX:UTF-8"
 
-\def\usewhat{pdflatex} % 定义编译方式 pdflatex, dvipdfmx, or xelatex
+\def\usewhat{xelatex} % 定义编译方式 pdflatex, dvipdfmx, or xelatex
 
 \def \xuewei{Bachelor} % 定义学位 Doctor, Master or Bachelor
 
 \def\xueke{Engineering} % 定义学科 Engineering, Science, Management, Arts, Philosophy, Economics, Laws, Education, or History
 
-\documentclass[cs4size,openany,twoside,UTF8]{ctexbook}
+\newif\ifusexelatex %判断编译环境 
+\def\temp{xelatex}
+\ifx\temp\usewhat
+\usexelatextrue
+\fi
 
-\input{setup/type.tex}    % 硕博类型
-\input{setup/package.tex} % 引用的宏包
+\ifusexelatex
+	\documentclass[cs4size,openany,twoside,UTF8,normalindentfirst,nofonts]{ctexbook}
+\else
+	\documentclass[cs4size,openany,twoside,UTF8]{ctexbook}
+\fi
+
+\input{setup/type.tex}    % 类型定义
+\ifusexelatex
+	\input{setup/xepackage.tex} % 引用xe的宏包
+\else
+	\input{setup/package.tex} % 引用的宏包
+\fi
 
 \graphicspath{{figures/}} %定义所有的eps文件在 figures 子目录下
 
 \begin{document}
 
-\input{setup/Definition} % 文本格式定义
+\ifusexelatex
+	\input{setup/xeDefinition} % 文本xe格式定义
+\else
+	\input{setup/Definition} % 文本格式定义
+\fi
+
 
 \frontmatter
 \ifxueweibachelor
-  \input{setup/bformat} % 本科蛋疼格式
+	\ifusexelatex
+		\input{setup/xebformat} % 本科xe蛋疼格式
+	\else
+		\input{setup/bformat} % 本科蛋疼格式
+	\fi
 \else
-  \input{setup/format} % 硕博格式
+	\ifusexelatex
+		\input{setup/xeformat} % 硕博xe格式
+	\else
+		\input{setup/format} % 硕博格式
+	\fi
 \fi
 
 \frontmatter
@@ -49,10 +76,20 @@
 
 \mainmatter\defaultfont\sloppy\raggedbottom
 
-\include{body/introduction}
+% Only for compiling the example successfully with XeLaTex here
+% Use your own content here
+\ifusexelatex
+	\include{body/xeintroduction}
+\else
+	\include{body/introduction}
+\fi
 \include{body/figures}
 \include{body/tables}
-\include{body/equations}
+\ifusexelatex
+	\include{body/xeequations}
+\else
+	\include{body/equations}
+\fi
 \include{body/others}
 \include{body/conclusion}   % 结论
 
