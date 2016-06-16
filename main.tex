@@ -13,6 +13,19 @@
 
 \graphicspath{{figures/}} %定义所有的eps文件在 figures 子目录下
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 查重，去除图表
+\newif\ifchachong
+
+\chachongfalse
+
+\ifchachong
+	\usepackage[nolists,nomarkers]{endfloat}
+	\renewcommand{\processdelayedfloats}{}
+\fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
 \input{setup/Definition} % 文本格式定义
