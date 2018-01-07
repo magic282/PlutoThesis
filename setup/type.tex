@@ -9,36 +9,79 @@
 \newif\ifxueweidoctor %判断论文类型
 \newif\ifxueweimaster
 \newif\ifxueweibachelor
+\newif\ifxueweicourse
+\newif\ifNeedEnAbstract
+\newif\ifNeedCoverOne
+\newif\ifNeedAppendix
+
 \def\temp{Doctor}
 \ifx\temp\xuewei
-  \xueweidoctortrue  \xueweimasterfalse  \xueweibachelorfalse
+  \xueweidoctortrue
+  \xueweimasterfalse
+  \xueweibachelorfalse
+  \xueweicoursefalse
+  \NeedEnAbstracttrue
+  \NeedCoverOnetrue
+  \NeedAppendixtrue
 \fi
+
 \def\temp{Master}
 \ifx\temp\xuewei
-  \xueweidoctorfalse  \xueweimastertrue  \xueweibachelorfalse
+  \xueweidoctorfalse
+  \xueweimastertrue
+  \xueweibachelorfalse
+  \xueweicoursefalse
+  \NeedEnAbstracttrue
+  \NeedCoverOnetrue
+  \NeedAppendixtrue
 \fi
+
 \def\temp{Bachelor}
 \ifx\temp\xuewei
-  \xueweidoctorfalse  \xueweimasterfalse  \xueweibachelortrue
+  \xueweidoctorfalse  
+  \xueweimasterfalse  
+  \xueweibachelortrue
+  \xueweicoursefalse
+  \NeedEnAbstracttrue
+  \NeedCoverOnetrue
+  \NeedAppendixtrue
+\fi
+
+\def\temp{Course}
+\ifx\temp\xuewei	
+  \xueweidoctorfalse  
+  \xueweimasterfalse  
+  \xueweibachelorfalse
+  \xueweicoursetrue
+  \NeedEnAbstractfalse
+  \NeedCoverOnefalse
+  \NeedAppendixfalse
 \fi
 
 \ifxueweidoctor
-  \newcommand{\cxuewei}{博士}
+  \newcommand{\cxuewei}{博士学位}
   \newcommand{\exuewei}{Doctor}
   \newcommand{\exueweier}{Doctoral}
-  \newcommand{\xueweishort}{博}
+  \newcommand{\xueweishort}{博士}
 \fi
 
 \ifxueweimaster
-  \newcommand{\cxuewei}{硕士}
+  \newcommand{\cxuewei}{硕士学位}
   \newcommand{\exuewei}{Master}
   \newcommand{\exueweier}{Master's}
-  \newcommand{\xueweishort}{硕}
+  \newcommand{\xueweishort}{硕士}
 \fi
 
 \ifxueweibachelor
-  \newcommand{\cxuewei}{本科}
+  \newcommand{\cxuewei}{本科学位}
   \newcommand{\exuewei}{Bachelor}
-  \newcommand{\exueweier}{Bachelor}
-  \newcommand{\xueweishort}{本}
+  \newcommand{\exueweier}{Bachelor's}
+  \newcommand{\xueweishort}{学士}
+\fi
+
+\ifxueweicourse
+  \newcommand{\cxuewei}{课程设计}
+  \newcommand{\exuewei}{Course}
+  \newcommand{\exueweier}{Course's}
+  \newcommand{\xueweishort}{课程}
 \fi

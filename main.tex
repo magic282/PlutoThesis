@@ -1,47 +1,79 @@
 % !Mode:: "TeX:UTF-8"
 
-\def\usewhat{pdflatex} % 定义编译方式 pdflatex, dvipdfmx, or xelatex
+\def\usewhat{xelatex} % 定义编译方式 pdflatex, dvipdfmx, or xelatex
 
-\def \xuewei{Bachelor} % 定义学位 Doctor, Master or Bachelor
+\def\xuewei{Course} % 定义学位 Doctor, Master or Bachelor
 
 \def\xueke{Engineering} % 定义学科 Engineering, Science, Management, Arts, Philosophy, Economics, Laws, Education, or History
 
-\documentclass[cs4size,openany,twoside,UTF8]{ctexbook}
+\newif\ifusexelatex %判断编译环境 
+	\def\temp{xelatex}
+	\ifx\temp\usewhat
+	\usexelatextrue
+\fi
 
-\input{setup/type.tex}    % 硕博类型
-\input{setup/package.tex} % 引用的宏包
+\ifusexelatex
+	\documentclass[cs4size,openany,twoside,UTF8,normalindentfirst,nofonts]{ctexbook}
+\else
+	\documentclass[cs4size,openany,twoside,UTF8]{ctexbook}
+\fi
+
+\input{setup/type.tex}    % 类型定义
+\ifusexelatex
+	\input{setup/xepackage.tex} % 引用xe的宏包
+\else
+	\input{setup/package.tex} % 引用的宏包
+\fi
 
 \graphicspath{{figures/}} %定义所有的eps文件在 figures 子目录下
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 查重，去除图表
-\newif\ifchachong
-
-\chachongfalse
-
-\ifchachong
-	\usepackage[nolists,nomarkers]{endfloat}
-	\renewcommand{\processdelayedfloats}{}
-\fi
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{document}
 
-\input{setup/Definition} % 文本格式定义
+\ifusexelatex
+	\input{setup/xeDefinition} % 文本xe格式定义
+\else
+	\input{setup/Definition} % 文本格式定义
+\fi
+
 
 \frontmatter
-\ifxueweibachelor
-  \input{setup/bformat} % 本科蛋疼格式
+\ifusexelatex
+	\ifxueweibachelor
+		\input{setup/xebformat} % 本科xe蛋疼格式
+	\fi
+	\ifxueweimaster
+		\input{setup/xeformat} % 本科蛋疼格式
+	\fi
+	\ifxueweidoctor
+		\input{setup/xeformat}
+	\fi
+	\ifxueweicourse
+		\input{setup/xebformat}
+	\fi
 \else
-  \input{setup/format} % 硕博格式
+	\ifxueweibachelor
+		\input{setup/bformat} % 本科xe蛋疼格式
+	\fi
+	\ifxueweimaster
+		\input{setup/format} % 本科蛋疼格式
+	\fi
+	\ifxueweidoctor
+		\input{setup/format}
+	\fi
+	\ifxueweicourse
+		\input{setup/bformat}
+	\fi
 \fi
 
 \frontmatter
 \ifxueweibachelor
-  \input{bcover} % 本科蛋疼封面
+  	\input{bcover} % 本科蛋疼封面
 \else
-  \input{cover} % 硕博封面
+	\ifxueweicourse
+  		\input{bcover}
+	\else
+  		\input{cover} % 硕博封面
+	\fi
 \fi
 
 % 中英目录
@@ -50,6 +82,7 @@
 \pdfbookmark[0]{目~~~~录}{mulu}
 \tableofcontents    % 中文目录
 \clearpage{\pagestyle{empty}\cleardoublepage}
+
 
 \ifxueweidoctor
 \tableofengcontents % 英文目录
@@ -62,12 +95,26 @@
 
 \mainmatter\defaultfont\sloppy\raggedbottom
 
+% Only for compiling the example successfully with XeLaTex here
+% Use your own content here
+%\ifusexelatex
+%	\include{body/xeintroduction}
+%\else
+%	\include{body/introduction}
+%\fi
+%\include{body/figures}
+%\include{body/tables}
+%\ifusexelatex
+%	\include{body/xeequations}
+%\else
+%	\include{body/equations}
+%\fi
+%\include{body/others}
+%\include{body/conclusion}   % 结论
+
 \include{body/introduction}
-\include{body/figures}
-\include{body/tables}
-\include{body/equations}
-\include{body/others}
-\include{body/conclusion}   % 结论
+\include{body/distrbution}
+
 
 %\include{body/simplefigure}
 %\include{body/simpletable}
@@ -83,19 +130,22 @@
 \addtolength{\bibsep}{-0.8em}
 \nocite{*}  %若将此命令屏蔽掉，则未引用的文献不会出现在文后的参考文献列表中。
 \bibliography{reference}
-\include{appendix/appA}    % 附录
-\include{appendix/publications}    % 所发文章
-\ifxueweibachelor
-  \include{appendix/bAuthorization} % 本科蛋疼承诺
-\else
-  \include{appendix/Authorization} % 硕博承诺
-\fi   
-\include{appendix/acknowledgements}% 致谢
 
-\ifxueweidoctor
-\include{appendix/Resume}          % 博士学位论文有个人简介
+\ifNeedAppendix
+	\include{appendix/appA}    % 附录
+	\include{appendix/publications}    % 所发文章
+	\ifxueweibachelor
+  		\include{appendix/bAuthorization} % 本科蛋疼承诺
+	\else
+	  \include{appendix/Authorization} % 硕博承诺
+	\fi   
+	\include{appendix/acknowledgements}% 致谢
+
+	\ifxueweidoctor
+		\include{appendix/Resume}          % 博士学位论文有个人简介
+	\fi
 \fi
 
 \clearpage
 
-\end{document} 
+\end{document}
