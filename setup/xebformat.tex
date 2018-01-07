@@ -19,15 +19,16 @@
 
 \allowdisplaybreaks[4]
 
-\CJKcaption{gb_452} 
-\CJKtilde
+%\CJKcaption{gb_452} 
+%\CJKtilde
 \setlength{\parindent}{2em}
 
 \arraycolsep=1.6pt
 
 \renewcommand\contentsname{\hei 目~~~~录}
 
-\renewcommand\chaptername{\CJKprechaptername~\thechapter~\CJKchaptername}
+\CTEXsetup[number={\arabic{chapter}}]{chapter}
+\renewcommand\chaptername{第~\thechapter~章}
 
 \setcounter{secnumdepth}{4} \setcounter{tocdepth}{2}
 
@@ -41,7 +42,7 @@
 \titleformat{\subsubsection}{\xiaosi\hei}{\thesubsubsection}{0.5em}{}
 \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
 
-\titlecontents{chapter}[3.8em]{\hspace{-3.8em}\hei}{\CJKprechaptername~\thecontentslabel~\CJKchaptername~~}{}{\titlerule*[4pt]{.}\contentspage}
+\titlecontents{chapter}[3.8em]{\hspace{-3.8em}\hei}{\thecontentslabel~~}{}{\titlerule*[4pt]{.}\contentspage}
 \dottedcontents{section}[32pt]{}{21pt}{0.3pc}
 \dottedcontents{subsection}[53pt]{}{30pt}{0.3pc}
 
@@ -72,19 +73,27 @@
 %根据单双面打印设置不同的页眉；
 
 \ifxueweidoctor
-  \fancyhead[CO]{\song \xiaowu\leftmark}
-  \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文 }%
-  \fancyfoot[C,C]{\xiaowu -~\thepage~-}
-\else
-  \ifxueweimaster
-    \fancyhead[CO]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文}
+	\fancyhead[CO]{\song \xiaowu\leftmark}
+  	\fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文 }%
+  	\fancyfoot[C,C]{\xiaowu -~\thepage~-}
+\fi
+
+\ifxueweimaster  
+	\fancyhead[CO]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文}
     \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文}%
     \fancyfoot[C,C]{\xiaowu -~\thepage~-}
-  \else
-    \fancyhead[CO]{\song \xiaowu 哈尔滨工业大学本科毕业设计（论文）}
-    \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学本科毕业设计（论文）}%
-    \fancyfoot[C,C]{\xiaowu -~\thepage~-}
-  \fi
+\fi
+
+\ifxueweibachelor  	
+    \fancyhead[CO]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文}
+	\fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文}%
+   	\fancyfoot[C,C]{\xiaowu -~\thepage~-}
+\fi
+
+\ifxueweicourse
+	\fancyhead[CO]{\song \xiaowu 哈尔滨工业大学 \cxuewei（论文）}
+   	\fancyhead[CE]{\song \xiaowu 哈尔滨工业大学 \cxuewei（论文）}%
+   	\fancyfoot[C,C]{\xiaowu -~\thepage~-}
 \fi
 
 \renewcommand\frontmatter{\cleardoublepage
@@ -141,10 +150,13 @@
 
 % 封面、摘要、版权、致谢格式定义
 \def\ctitle#1{\def\@ctitle{#1}}\def\@ctitle{}
+\def\ctitleone#1{\def\@ctitleone{#1}}\def\@ctitleone{}
+\def\ctitletwo#1{\def\@ctitletwo{#1}}\def\@ctitletwo{}
 \def\cdegree#1{\def\@cdegree{#1}}\def\@cdegree{}
 \def\caffil#1{\def\@caffil{#1}}\def\@caffil{}
 \def\csubject#1{\def\@csubject{#1}}\def\@csubject{}
 \def\cauthor#1{\def\@cauthor{#1}}\def\@cauthor{}
+\def\cstuid#1{\def\@cstuid{#1}}\def\@cstuid{} % 本科蛋疼学号
 \def\csupervisor#1{\def\@csupervisor{#1}}\def\@csupervisor{}
 \def\cassosupervisor#1{\def\@cassosupervisor{{\hei 副 \hfill 导 \hfill 师} & #1\\}}\def\@cassosupervisor{}
 \def\ccosupervisor#1{\def\@ccosupervisor{{\hei 联 \hfill 合\hfill 导 \hfill 师} & #1\\}}\def\@ccosupervisor{}
@@ -171,134 +183,82 @@
 % 定义封面
 \def\makecover{
     \begin{titlepage}
-    % 封面一
-   \vspace*{0.8cm}
-   \begin{center}
-    \centerline{\xiaoyi\song\textbf{\cxuewei 论文}}
-
-    \vspace{1cm}
-
-    \parbox[t][2.8cm][t]{\textwidth}{
+      % 封面一
+      \ifNeedEnAbstract
+      \vspace*{0.8cm}
+      \begin{center}
+     
+    \parbox[t][3.4cm][t]{\textwidth}{
     \begin{center}\erhao\hei\@ctitle\end{center} }
-
-    \parbox[t][5.1cm][t]{\textwidth}{ %英文标题太长时可以采用\xiaoer
-    \begin{center}\erhao\textbf{\@etitle}\end{center} }
-
-    \parbox[t][7.4cm][t]{\textwidth}{
-    \begin{center}\xiaoer\song\textbf{\@cauthor}\end{center}}
-
-    \parbox[t][1.4cm][t]{\textwidth}{
-    \begin{center}\kaishu\xiaoer\textbf{哈尔滨工业大学}\end{center} }
     
-    {\song\xiaoer\textbf{\@cdate}}
+    \parbox[t][9.4cm][t]{\textwidth}{
+        \begin{center}\xiaoer\song\textbf{\@cauthor}\end{center}}
+  
+
+            {\hei \xiaosi
+            	\begin{tabularx}{6.768cm}{r@{：}c}
+            		院\hfill（系） & \@caffil\\
+            		学\quad \quad 号 & \@cstuid
+            	\end{tabularx}}
+ 			{\hei \xiaosi
+ 				\begin{tabularx}{6.768cm}{r@{：}c}
+ 					专\hfill 业 & \@csubject\\
+ 					任课教师 & \@csupervisor
+ 				\end{tabularx}}
+
+
+    \vspace*{3.0cm}
+    
+    {\song\xiaosi\textbf{\@cdate}}
 
     \end{center}
 
-    % 封二 空白页
-    \ifxueweidoctor
-      \newpage
-      ~~~\vspace{1em}
-      \thispagestyle{empty}
-    \fi
-
-    %内封
     \newpage
+    \fi
+    %内封
     \thispagestyle{empty}
 
 \begin{center}
 
-			{\song \xiaosi
-			\begin{tabular}{@{}r@{：}l@{}}
-			国内图书分类号 & \@natclassifiedindex\\
- 			国际图书分类号 & \@internatclassifiedindex
-			\end{tabular}}\hfill
-			{\song \xiaosi
-			\begin{tabular}{@{}r@{：}l@{}}
-			学校代码 & 10213\\
- 			密级 &  公开
-			\end{tabular}}
-    \parbox[t][3.2cm][t]{\textwidth}{\begin{center} \end{center} }
-
-    \parbox[t][2.4cm][t]{\textwidth}{\xiaoer
-    \begin{center} {\song \bfseries \@cdegree 学位论文 }\end{center} }
-
-    \parbox[t][5cm][t]{\textwidth}{\erhao
-    \begin{center} {\hei  \@ctitle}\end{center} }
-	\parbox[t][9.8cm][b]{\textwidth}
-     {\sihao
-    \begin{center} \renewcommand{\arraystretch}{1.62} \song
-    \begin{tabular}{l@{：}l}
-    {\hei \xueweishort \hfill 士\hfill 研\hfill 究\hfill 生}           & \@cauthor\\
-    {\hei 导\hfill 师}                       & \@csupervisor\\
-	\@cassosupervisor
-	\@ccosupervisor
-    {\hei 申\hfill 请\hfill 学\hfill 位} & \@cdegree\\
-    {\hei 学\hfill 科}           & \@csubject\\
-    {\hei 所\hfill 在\hfill 单\hfill 位} & \@caffil\\
-    {\hei 答\hfill 辩\hfill 日\hfill 期} & \@cdate\\
-    {\hei 授予学位单位}                     & 哈尔滨工业大学
+	\vspace*{0.6cm}
+	
+   % \parbox[t][3.2cm][t]{\textwidth}{\begin{center} \end{center} }
+    
+    \begin{figure}[htbp]
+   	\centering
+   	\includegraphics[scale=0.38]{logo.jpg}
+   	\end{figure}
+   	
+   	\vspace*{0.75cm}
+   	
+   	{\xw\xiaochu\textbf{概率论与数理统计（小论文）}} % 字体等待替换中
+   	
+   	 %教务处去死吧，不知道华文新魏是付费的吗你妹，呵呵！先上图！
+%   	\begin{figure}[htbp]
+%	\centering
+%	\includegraphics[scale=0.25]{hehejwc.png}
+%	\end{figure}
+	
+    \vspace*{1.7cm}
+    
+	\parbox[t][14.2cm][b]{\textwidth}
+     {\xiaosan
+    \begin{center} \renewcommand{\arraystretch}{2.5} \hei
+    \begin{tabular}{l@{\ \  }c}
+    {\hei\xiaoer  题\hfill 目}                  & \underline{\makebox[6.1cm]{\xiaoer \@ctitleone}}\\
+%    &  \underline{\makebox[6.1cm]{\xiaoer \@ctitletwo}}\\
+%	& \\
+    {\hei 专\hfill 业}                  & \underline{\makebox[6.1cm]{\@csubject}}\\
+    {\hei 学\hfill 号}                  & \underline{\makebox[6.1cm]{\@cstuid}}\\
+    {\hei 学\hfill 生}                  & \underline{\makebox[6.1cm]{\@cauthor}}\\
+    {\hei 任\hfill 课\hfill 教\hfill 师} & \underline{\makebox[6.1cm]{\@csupervisor}}\\
+    {\hei 日\hfill 期} & \underline{\makebox[6.1cm]{\@cdate}}
     \end{tabular} \renewcommand{\arraystretch}{1}
     \end{center} }
 \end{center}
 
-%%%%%%增加一空白页
-  \ifxueweidoctor
-    \newpage
-    ~~~\vspace{1em}
-    \thispagestyle{empty}
-  \fi
-
-    % 英文封面
-    \newpage
-    \thispagestyle{empty}
-
-    {
-    \xiaosi\noindent Classified Index: \@natclassifiedindex \\
-                  U.D.C:  \@internatclassifiedindex }
-    \begin{center}
-    \parbox[t][1.6cm][t]{\textwidth}{\begin{center} \end{center} }
-    \parbox[t][3.5cm][t]{\textwidth}{\xiaoer
-    \begin{center} {  Dissertation for the {\exueweier} Degree in \exueke}\end{center} } %与中文保持一致，删除in {\exueke}
-
-    \parbox[t][7cm][t]{\textwidth}{\erhao
-    \begin{center} { \bfseries \@etitle}\end{center} }
-
-%★★★★若信息内容不太长，不会引起信息内容分行时，使用tabular环境，否则使用下面的tabularx环境。
-    {\sihao\renewcommand{\arraystretch}{1.3}
-    \begin{tabular}{@{}l@{~}l@{}}
-    \textbf{Candidate:}                     &  \@eauthor\\
-    \textbf{Supervisor:}                    &  \@esupervisor\\
-	  \@eassosupervisor
-	  \@ecosupervisor
-    \textbf{Academic Degree Applied for:}   &  \@edegree\\
-    \textbf{Specialty:}                     &  \@esubject\\
-    \textbf{Affiliation:}                   &  \@eaffil\\
-    \textbf{Date of Defence:}               &  \@edate\\
-    \textbf{Degree-Conferring-Institution:} &  Harbin Institute of Technology
-    \end{tabular}\renewcommand{\arraystretch}{1}}
-
-    %{\sihao\renewcommand{\arraystretch}{1.3}
-    %\begin{tabularx}{\textwidth}{@{}l@{~}X@{}}
-    %\textbf{Candidate:}                     &  \@eauthor\\
-    %\textbf{Supervisor:}                    &  \@esupervisor\\
-		%\@eassosupervisor
-	  %\@ecosupervisor
-    %\textbf{Academic Degree Applied for:}   &  \@edegree\\
-    %\textbf{Specialty:}                     &  \@esubject\\
-    %\textbf{Affiliation:}                   &  \@eaffil\\
-    %\textbf{Date of Defence:}               &  \@edate\\
-    %\textbf{Degree-Conferring-Institution:} &  Harbin Institute of Technology
-    %\end{tabularx}\renewcommand{\arraystretch}{1}}
-
-    \end{center}
     \end{titlepage}
 
-%%%%%%增加一空白页
-  \ifxueweidoctor
-    \newpage
-    ~~~\vspace{1em}
-    \thispagestyle{empty}
-  \fi
 %%%%%%%%%%%%%%%%%%%   Abstract and keywords  %%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 
@@ -313,18 +273,26 @@
 {\hei 关键词}：\@ckeywords
 
 %%%%%%%%%%%%%%%%%%%   English Abstract  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifNeedCoverOne
+
 \clearpage
 
 \phantomsection
 \markboth{Abstract}{Abstract}
 \addcontentsline{toc}{chapter}{\xiaosi ABSTRACT}
-\addcontentsline{toe}{chapter}{\bfseries \xiaosi Abstract (In English)}  \chapter*{Abstract}
+\addcontentsline{toe}{chapter}{\bfseries \xiaosi Abstract (In English)}  
+\addtocontents{toc}{\vspace{\baselineskip}}
+\addtocontents{toe}{\vspace{\baselineskip}}
+\chapter*{\bf Abstract}
 \@eabstract
 \vspace{\baselineskip}
 
 \hangafter=1\hangindent=60pt\noindent
 {\textbf{Keywords:}}  \@ekeywords
+
+\fi
 }
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 英文目录格式

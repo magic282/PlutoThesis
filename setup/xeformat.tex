@@ -19,16 +19,18 @@
 
 \allowdisplaybreaks[4]
 
-\CJKcaption{gb_452} 
-\CJKtilde
+%\CJKcaption {gb_452} 
+%\CJKtilde
 \setlength{\parindent}{2em}
 
 \arraycolsep=1.6pt
 
 \renewcommand\contentsname{\hei 目~~~~录}
 
-\renewcommand\chaptername{\CJKprechaptername~\thechapter~\CJKchaptername}
+\CTEXsetup[number={\arabic{chapter}}]{chapter}
+\renewcommand\chaptername{第~\thechapter~章}
 
+%\CTEXsetup[name={第,章}]{chapter}
 \setcounter{secnumdepth}{4} \setcounter{tocdepth}{2}
 
 
@@ -41,7 +43,7 @@
 \titleformat{\subsubsection}{\xiaosi\hei}{\thesubsubsection}{0.5em}{}
 \titlespacing{\subsubsection}{0pt}{0pt}{0pt}
 
-\titlecontents{chapter}[3.8em]{\hspace{-3.8em}\hei}{\CJKprechaptername~\thecontentslabel~\CJKchaptername~~}{}{\titlerule*[4pt]{.}\contentspage}
+\titlecontents{chapter}[3.8em]{\hspace{-3.8em}\hei}{\thecontentslabel~~}{}{\titlerule*[4pt]{.}\contentspage}
 \dottedcontents{section}[32pt]{}{21pt}{0.3pc}
 \dottedcontents{subsection}[53pt]{}{30pt}{0.3pc}
 
@@ -73,18 +75,12 @@
 
 \ifxueweidoctor
   \fancyhead[CO]{\song \xiaowu\leftmark}
-  \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文 }%
+  \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 学位论文}%
   \fancyfoot[C,C]{\xiaowu -~\thepage~-}
 \else
-  \ifxueweimaster
-    \fancyhead[CO]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文}
-    \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 论文}%
-    \fancyfoot[C,C]{\xiaowu -~\thepage~-}
-  \else
-    \fancyhead[CO]{\song \xiaowu 哈尔滨工业大学本科毕业设计（论文）}
-    \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学本科毕业设计（论文）}%
-    \fancyfoot[C,C]{\xiaowu -~\thepage~-}
-  \fi
+  \fancyhead[CO]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 学位论文}
+  \fancyhead[CE]{\song \xiaowu 哈尔滨工业大学\cxueke\cxuewei 学位论文}%
+  \fancyfoot[C,C]{\xiaowu -~\thepage~-}
 \fi
 
 \renewcommand\frontmatter{\cleardoublepage
@@ -174,7 +170,7 @@
     % 封面一
    \vspace*{0.8cm}
    \begin{center}
-    \centerline{\xiaoyi\song\textbf{\cxuewei 论文}}
+    \centerline{\xiaoyi\song\textbf{\cxuewei 学位论文}}
 
     \vspace{1cm}
 
@@ -204,6 +200,7 @@
     %内封
     \newpage
     \thispagestyle{empty}
+    \pdfbookmark[0]{\@ctitle}{ctitlepage}
 
 \begin{center}
 
@@ -251,6 +248,7 @@
     % 英文封面
     \newpage
     \thispagestyle{empty}
+    \pdfbookmark[0]{\uppercase{\@etitle}}{etitlepage}
 
     {
     \xiaosi\noindent Classified Index: \@natclassifiedindex \\
@@ -318,7 +316,10 @@
 \phantomsection
 \markboth{Abstract}{Abstract}
 \addcontentsline{toc}{chapter}{\xiaosi ABSTRACT}
-\addcontentsline{toe}{chapter}{\bfseries \xiaosi Abstract (In English)}  \chapter*{Abstract}
+\addcontentsline{toe}{chapter}{\bfseries \xiaosi Abstract (In English)}  
+\addtocontents{toc}{\vspace{\baselineskip}}
+\addtocontents{toe}{\vspace{\baselineskip}}
+\chapter*{\bf Abstract}
 \@eabstract
 \vspace{\baselineskip}
 

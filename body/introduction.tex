@@ -1,15 +1,105 @@
-% !Mode:: "TeX:UTF-8" 
+\BiAppChapter{正态分布}{}
 
-\BiChapter{绪论}{Introduction}
+要说到概率论与统计里面最有趣的公式, 恐怕正态分布当之无愧可以当选. 这个分布的 $p.d.f$ 虽然形式咋看之下不是非常优美, 但是, 这个函数却在隐隐之中可以让人看见自然界的秩序所在. 我们在课堂上学习这个分布的时候, 却并没有计较这个函数的来历, 我们想先介绍一下和这个函数的一些故事：
 
-\BiSection{模板的使用方法介绍}{Introduction to the application method of the template}
-如果您是~\LaTeX~新手，请您在使用此模板之前，先观看一下模板的使用说明~PPT 演示文档《哈工大学位论文~\LaTeX~模板使用方法介绍》，先大致了解一下此模板的使用方法，之后再准备使用此模板撰写学位论文；如果您有一定的~\LaTeX~技术基础，可以跳过此步骤。
+	\BiSection{正态分布的历史}{}
+		正态分布的概率密度函数为：
 
-\BiSection{哈尔滨工业大学~\LaTeX~技术交流~QQ 群介绍}{Introduction to the QQ groups for \LaTeX~technical exchange in HIT}
-《哈工大硕博学位论文~\LaTeX~模板》项目现已加入哈工大研究生“学术桥”活动中，其两个官方~QQ 群分别为
+		\begin{equation}
+			f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-\frac{(x-\mu)^2}{2 \sigma^2}} 	
+		\end{equation}
+	
+		
+		很难想象这个复杂的函数是如何被发现的. 
+		
+		历史上, 这个函数的第一次发现来源于棣莫弗(De Moivre)对二项分布的近似计算, 即, 对于随机变量$X \sim B(n, p)$ 求出当 $n$ 比较大的时候 $X$ 所服从的分布. 这个问题的结论我们也比较熟悉, 当$n\rightarrow\infty$ 的时候, $X$ 服从的是正态分布, 其中正态分布的期望值为 $\mu = np $, 方差为 $\sigma^2 = np(1-p)$. 然而, 我们现在并不只道为什么. 
 
-\centerline{学术桥-\LaTeX~交流群~1：38872389}
-\centerline{学术桥-\LaTeX~交流群~2：88984107}
-\noindent 欢迎大家加入。加入~QQ 群之后，请大家将自己的名字前面加上当前月份标识，如果您没有标识，在~QQ 群人数已满但仍有人要加入此~QQ 群时，我们会将您优先请出~QQ 群，谢谢合作！您可以在~QQ 群中和其他人讨论关于此模板或其它~\LaTeX~技术相关的任何问题，在提问之前，可以先去~\href{http://bbs.ctex.org/}{CTEX 论坛}或其它网站搜索您所要得到的解决方案，然后确定是否要继续提问，从而节省您的宝贵时间。群共享中包含有大量的~\LaTeX~技术资料，方便大家下载阅读，同时还包含了最新的《哈工大硕博学位论文~\LaTeX~模板》。
-
-原则上，模板在~Google Code 的~\href{http://code.google.com/p/plutothesis/}{PlutoThesis 项目}的\href{http://code.google.com/p/plutothesis/downloads/list}{下载列表}中也进行了同步更新，但是模板维护人员不再解答用户在此网站提出的问题，如有问题请加入上述的两个~QQ 群中再询问，敬请谅解。
+		\BiSubsection{对于二项分布的近似计算}{}
+				上面这个问题的有一个用二项分布表示的表达式,对于其中的一个特例$p = \frac{1}{2}$
+				
+					\begin{equation}\label{ch1:binom}
+						P(X = k) = \binom{k}{n} (\frac{1}{2})^n
+					\end{equation}
+				我们可以换一个形式来写这个式子				
+				
+					\begin{equation}\label{ch1:binom}
+						P(X = \frac{n}{2} \pm d) = \binom{\frac{n}{2} \pm d}{n} (\frac{1}{2})^n
+					\end{equation}		
+								
+				其中$\binom{k}{n} = \frac{n!}{k! (n-k)!}$ 表示二项式系数. 棣莫弗在计算这个表达式的时候利用了一个近似的公式, 即斯特林(Stirling)公式：
+				
+					\begin{equation}
+						n! \sim \sqrt{2\pi n} (\frac{n}{e})^n
+					\end{equation}
+				
+								
+				用上面的这个式子代入 \ref{ch1:binom} 得到
+					\begin{equation}
+						P(X = \frac{n}{2}) = \frac{n!}{(\frac{n}{2}!)^2} (\frac{1}{2}) ^n \approx \sqrt{\frac{2}{\pi n}}
+					\end{equation}
+					
+				然后, 不难得到, 
+					\begin{equation}
+						P(X = \frac{n}{2} + d) = \frac{2}{\sqrt{2 \pi n}} e^{-\frac{2d^2}{n}}
+					\end{equation}
+				这个时候, 其实已经可以发现, 这个式子已经和正态分布的概率密度函数非常接近了. 这个就是正态分布最早的发现, 在这个发现的基础上, 拉普拉斯把这个结论推广到了 $p \neq \frac{1}{2}$ 的情况. 
+				
+				于是, 就有了棣莫弗-拉普拉斯(De Moivre-Laplace)中心极限定理:
+				
+				\begin{theorem}
+					\begin{equation}						
+						\lim_{n \rightarrow \infty} P\left\{\frac	{X_n -np}{\sqrt{np(1-p)}} \le x\right\} = \int_{-\infty}^{x} \frac{1}{\sqrt{2 \pi}} e^{-\frac{x^2}{2}} dt
+					\end{equation}
+				\end{theorem}
+				
+				
+				我们接下来可以证明一个更加一般的结论.
+				
+	\BiSection{中心极限定理}{}
+		我们课堂上所介绍的中心极限定理指的是林登伯格-莱维(Lindenberg-Levy)中心极限定理. 
+		\begin{theorem}
+			如果$n$个随机变量$X_i$有有限的期望$\mu$与方差$\sigma^2$, 且同分布, 那么
+			\begin{equation}
+				\frac{\sum_{i=1}^n X_i - n\mu}{\sqrt{n} \sigma} \sim N(0,1)
+			\end{equation}
+		\end{theorem}
+		中心极限定理的证明需要一些工具, 我们下面先给出他们.
+		
+		\begin{definition}			
+			设一个随机变量$ X$的$p.d.f$ 为$f(X)$, 那么定义这个随机变量的特征函数为:
+			\begin{equation}
+				\varphi(\omega) = \int_{-\infty}^{+\infty} f(t) e^{i\omega t} dt
+			\end{equation}
+		\end{definition}
+		
+		由复变函数的相关知识, 可以知道, 特征函数其实就是概率密度函数的傅立叶变换的共轭复数. 以及特征函数和概率密度函数之间存在双射关系.
+		那么, 我们在计算两个独立的随机变量的和的时候, 就只需要计算这两个函数的特征函数的卷积, 然后再做傅里叶逆变换就可以求得加和后的变量所满足的关系.
+		
+		\begin{proof}
+				对于任意的一组满足中心极限定理前提的随机变量$X_i$,设$X_i-\mu$的特征函数为$\varphi(t)$, 有如下的式子成立:
+		
+				\begin{equation}
+					\varphi(0)' = i E(X_i - \mu) = 0
+				\end{equation}
+		
+				\begin{equation}
+					\varphi(0)'' = i^2 E((X_i-\mu)^2) = -[D(X_i-\mu) - [E(X_i - \mu)]^2] = -\sigma^2
+				\end{equation}
+		
+				所以, $X$ 的特征函数可以在 $\omega = 0$ 附近泰勒展开为 $\varphi(\omega) = 1 - \frac{1}{2} \sigma^2 \omega^2 + o(n^2)$
+		
+				那么, 对于 $n$ 个独立同分布的随机变量求和, 和的特征函数就为他们所服从的随机变量特征函数的$n$次幂, 即 
+				
+				\begin{equation}
+					\begin{aligned}[]						
+						\left[\varphi(\frac{\omega}{\sigma \sqrt{n}})\right]^n & =  \left[1 - \frac{1}{2n} \omega^2 + o(\omega^2)\right]^n \\
+						& =  e^{-\frac{\omega^2}{2}}
+					\end{aligned}				
+				\end{equation}
+				
+				而标准正态分布的概率密度函数$\Phi(x)$ 对应的特征函数就是$e^{-\frac{\omega^2}{2}}$.
+				所以, 命题得证.							
+		\end{proof}
+		
+		正态分布是如此的优美,大部分的随机变量, 居然都可以在中心极限定理的作用下统一为一个随机变量.
+					

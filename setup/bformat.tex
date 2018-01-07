@@ -174,15 +174,16 @@
 % 定义封面
 \def\makecover{
     \begin{titlepage}
-    % 封面一
-   \vspace*{0.8cm}
-   \begin{center}
+      % 封面一
+      \ifNeedCoverOne
+        \vspace*{0.8cm}
+        \begin{center}
    
-    \parbox[t][3.4cm][t]{\textwidth}{
-    \begin{center}\erhao\hei\@ctitle\end{center} }
+        \parbox[t][3.4cm][t]{\textwidth}{
+        \begin{center}\erhao\hei\@ctitle\end{center} }
     
-    \parbox[t][9.4cm][t]{\textwidth}{
-        \begin{center}\xiaoer\song\textbf{\@cauthor}\end{center}}
+        \parbox[t][9.4cm][t]{\textwidth}{
+          \begin{center}\xiaoer\song\textbf{\@cauthor}\end{center}}
   
       
             {\hei \xiaosi
@@ -196,14 +197,15 @@
   			指导教师 &  \@csupervisor
  			\end{tabular*}}
 
-    \vspace*{3.0cm}
+       \vspace*{3.0cm}
     
-    {\song\xiaosi\textbf{\@cdate}}
+        {\song\xiaosi\textbf{\@cdate}}
 
-    \end{center}
+      \end{center}
 
+      \newpage
+      \fi
     %内封
-    \newpage
     \thispagestyle{empty}
 
 \begin{center}
@@ -239,8 +241,8 @@
     {\hei 专\hfill 业}                  & \underline{\makebox[6.1cm]{\@csubject}}\\
     {\hei 学\hfill 号}                  & \underline{\makebox[6.1cm]{\@cstuid}}\\
     {\hei 学\hfill 生}                  & \underline{\makebox[6.1cm]{\@cauthor}}\\
-    {\hei 指\hfill 导\hfill 教\hfill 师} & \underline{\makebox[6.1cm]{\@csupervisor}}\\
-    {\hei 答\ \  \hfill 辩\ \  \hfill 日\ \  \hfill 期} & \underline{\makebox[6.1cm]{\@cdate}}
+    {\hei 任\hfill 课\hfill 教\hfill 师} & \underline{\makebox[6.1cm]{\@csupervisor}}\\
+    {\hei 日\hfill 期} & \underline{\makebox[6.1cm]{\@cdate}}
     \end{tabular} \renewcommand{\arraystretch}{1}
     \end{center} }
 \end{center}
@@ -260,18 +262,20 @@
 \hangafter=1\hangindent=51pt\noindent
 {\hei 关键词}：\@ckeywords
 
-%%%%%%%%%%%%%%%%%%%   English Abstract  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+%%%%%%%%%%%%%%%%%%% English Abstract  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifNeedEnAbstract 
+  \clearpage
 
-\phantomsection
-\markboth{Abstract}{Abstract}
-\addcontentsline{toc}{chapter}{\xiaosi ABSTRACT}
-\addcontentsline{toe}{chapter}{\bfseries \xiaosi Abstract (In English)}  \chapter*{Abstract}
-\@eabstract
-\vspace{\baselineskip}
+  \phantomsection
+  \markboth{Abstract}{Abstract}
+  \addcontentsline{toc}{chapter}{\xiaosi ABSTRACT}
+  \addcontentsline{toe}{chapter}{\bfseries \xiaosi Abstract (In English)}  \chapter*{Abstract}
+  \@eabstract
+  \vspace{\baselineskip}
 
-\hangafter=1\hangindent=60pt\noindent
-{\textbf{Keywords:}}  \@ekeywords
+  \hangafter=1\hangindent=60pt\noindent
+  {\textbf{Keywords:}}  \@ekeywords
+\fi
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
